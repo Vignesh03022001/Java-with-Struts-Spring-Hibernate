@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" 
+	"http://struts.apache.org/dtds/struts-2.5.dtd" >
+<struts>
+  <constant name="struts.devMode" value="true"/>
+  <package name="default" extends="struts-default" namespace="/">
+    <!-- List notes -->
+    <action name="notes" class="com.example.note.NoteListAction">
+      <result>/WEB-INF/views/note/list.jsp</result>
+    </action>
+
+    <!-- Show form -->
+    <action name="note-form" class="com.example.note.NoteFormAction">
+      <result name="input">/WEB-INF/views/note/form.jsp</result>
+    </action>
+
+    <!-- Save (we’ll just bounce back to list for now) -->
+    <action name="note-save" class="com.example.note.NoteSaveAction" method="execute">
+      <result name="input">/WEB-INF/views/note/form.jsp</result>
+      <result name="success" type="redirect">notes.action</result>
+    </action>
+  </package>
+</struts>
