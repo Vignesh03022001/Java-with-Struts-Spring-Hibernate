@@ -7,15 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.example.domain.Note;
 import com.example.service.NoteService;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Component
 @Scope("prototype")
 public class NoteListAction extends ActionSupport {
-	private List<String> notes;
+	private List<Note> notes;
 
-	public List<String> getNotes() {
+	public List<Note> getNotes() {
 		return notes;
 	}
 	
@@ -24,7 +25,7 @@ public class NoteListAction extends ActionSupport {
 	@Override
 	public String execute() {
 		// hard-coded demo data for now
-		notes = noteService.listNotes();
+		notes = noteService.list();
 		return SUCCESS;
 	}
 }
